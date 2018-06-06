@@ -52,7 +52,7 @@
 
 	<body>
 		<form action="ip_changer.php" method=post id="form">
-			<p>NEW IP :<input type="text" name="ip" placeholder="eg. xxx.xxx.xxx.xxx"></p>
+			<p>NEW IP :<input type="text" name="ip" id="newip" placeholder="eg. xxx.xxx.xxx.xxx"></p>
 			<p> Frequency :<input type="number" id="fre" value=393050 onchange="handleChange(this);" name='frequency' min="393000" max="450000" />
 			<p>Bandwidth :<select id="defaults" name='bandwidth'>
 								<option value=2000 selected>2000</option>
@@ -90,11 +90,13 @@
 		<script> 
 			
 			function setdefaults(){
-				document.getElementById("defaults").value=2000;
-				document.getElementById("fre").value=393050;
-				document.getElementById("mod").value=16;
-				document.getElementById("fec").value="2/3";
-				document.getElementById("gain").value=-5;
+				document.getElementById("newip").value="192.168.0.221";
+				document.getElementById("defaults").value=6000;
+				document.getElementById("fre").value=403000;
+				document.getElementById("mod").value=4;
+				document.getElementById("fec").value="1/2";
+				document.getElementById("gi").value="1/32"
+				document.getElementById("gain").value=-2;
 
 			}
 			

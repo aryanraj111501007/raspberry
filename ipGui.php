@@ -77,7 +77,7 @@
     	<a href="#" id="filldetails" onclick="addFields()">add camera</a>
 		<form action="ip_changer.php" method=post id="form">
 			
-			<div id="container"/>
+			<div id="container"></div>
 			<p> Frequency :<input type="number" id="fre" value=393050 onchange="handleChange(this);" name='frequency' min="393000" max="450000" />
 
 			<p>Bandwidth :<select id="defaults" name='bandwidth'>
@@ -109,7 +109,7 @@
 			<p> Gain :<input type="number" id="gain" name="Gain" min=-15 max=0></p>
 			<input type="text" id="camera" name="camera" value="">Number of camera<br />
 			
-			<div id="container"/>
+			
 
 			<p><button>submit</button>
 		</form>
@@ -127,7 +127,7 @@
 				document.getElementById("gain").value=-2;
 
 			}
-			document.addEventListener('contextmenu', event => event.preventDefault());
+			
 			
 			
 

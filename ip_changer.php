@@ -34,7 +34,7 @@
 	$txt = "$count"."\n"."$txt"."$frequency"."\n"."$bandwidth"."\n"."$modulation"."\n"."$fec"."\n"."$gi"."\n"."$Gain"."\n";
 	fwrite($myfile, $txt);
 	fclose($myfile);
-	header('Location:conformation.php');
+	header('Location:confirmation.php');
 	echo $Ip[2];
 
 

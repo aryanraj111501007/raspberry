@@ -118,7 +118,7 @@
 		<script> 
 			
 			function setdefaults(){
-				document.getElementById("newip").value="192.168.0.221";
+				//document.getElementById("newip").value="192.168.0.221";
 				document.getElementById("defaults").value=6000;
 				document.getElementById("fre").value=403000;
 				document.getElementById("mod").value=4;

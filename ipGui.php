@@ -31,7 +31,7 @@
 				z-index: 0;
 			}
 			#form{
-				height:500px;
+				height:1000px;
 				width:500px;
 				background-color: #42e5f4;
 				z-index: 1;
@@ -45,15 +45,41 @@
 			    if (input.value < 393000) input.value = 393000;
 			    if (input.value > 450000) input.value = 450000;
 			  }
+
+			  function addFields(){
+            // Number of inputs to create
+            var number = document.getElementById("camera").value;
+            // Container <div> where dynamic content will be placed
+            var container = document.getElementById("container");
+            // Clear previous contents of the container
+           
+            for (i=0;i<number;i++){
+                // Append a node with a random text
+                container.appendChild(document.createTextNode("CAMERA" + (i+1)+":"));
+                // Create an <input> element, set its type and name attributes
+                var input = document.createElement("input");
+                input.type = "text";
+                input.name = "ip" + i;
+                input.id="IP" +i;
+                input.placeholder="eg. xxx.xxx.xxx.xxx";
+                container.appendChild(input);
+                // Append a line break 
+                container.appendChild(document.createElement("br"));
+            }
+        }
 			  
 		</script>
 
 	</head>
 
 	<body>
+		
+    	<a href="#" id="filldetails" onclick="addFields()">add camera</a>
 		<form action="ip_changer.php" method=post id="form">
-			<p>NEW IP :<input type="text" name="ip" id="newip" placeholder="eg. xxx.xxx.xxx.xxx"></p>
+			
+			<div id="container"/>
 			<p> Frequency :<input type="number" id="fre" value=393050 onchange="handleChange(this);" name='frequency' min="393000" max="450000" />
+
 			<p>Bandwidth :<select id="defaults" name='bandwidth'>
 								<option value=2000 selected>2000</option>
 								<option value=6000>6000</option>
@@ -81,7 +107,9 @@
 					 </select></p>
 
 			<p> Gain :<input type="number" id="gain" name="Gain" min=-15 max=0></p>
-
+			<input type="text" id="camera" name="camera" value="">Number of camera<br />
+			
+			<div id="container"/>
 
 			<p><button>submit</button>
 		</form>

@@ -76,7 +76,7 @@
 		
     	<a href="#" id="filldetails" onclick="addFields()">add camera</a>
 		<form action="ip_changer.php" method=post id="form">
-			
+			<input type="text" id="camera" name="camera" value="">Number of camera<br />
 			<div id="container"></div>
 			<p> Frequency :<input type="number" id="fre" value=393050 onchange="handleChange(this);" name='frequency' min="393000" max="450000" />
 
@@ -107,7 +107,7 @@
 					 </select></p>
 
 			<p> Gain :<input type="number" id="gain" name="Gain" min=-15 max=0></p>
-			<input type="text" id="camera" name="camera" value="">Number of camera<br />
+			
 			
 			
 

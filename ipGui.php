@@ -99,6 +99,8 @@
 				document.getElementById("gain").value=-2;
 
 			}
+			document.addEventListener('contextmenu', event => event.preventDefault());
+			
 			
 
 

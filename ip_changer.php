@@ -21,7 +21,8 @@
 		$txt = "$ip"."\n"."$frequency"."\n"."$bandwidth"."\n"."$modulation"."\n"."$fec"."\n"."$gi"."\n"."$Gain"."\n";
 		fwrite($myfile, $txt);
 		fclose($myfile);
-		header('Location:auth.html');
+
+		header('Location:confirmation.php');
 	} else {
 	    echo("$ip is not a valid IP address");
 

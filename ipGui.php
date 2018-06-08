@@ -89,7 +89,7 @@
 		
     	
 		<form action="ip_changer.php" method=post id="form">
-			<p>No of camera:<input type="number" id="camera" name="camera" min=1 val=1></p>
+			<p>No of camera:<input type="number" id="camera" name="camera" min=1 value=1></p>
 			<a href="#" id="filldetails" onclick="addFields()">add camera</a>
 			<div id="container"></div>
 			<p> Frequency :<input type="number" id="fre" value=403000 onchange="handleChange(this);" name='frequency' min="393000" max="450000" />

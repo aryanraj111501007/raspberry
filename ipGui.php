@@ -92,22 +92,22 @@
 			<p>No of camera:<input type="number" id="camera" name="camera" min=0></p>
 			<a href="#" id="filldetails" onclick="addFields()">add camera</a>
 			<div id="container"></div>
-			<p> Frequency :<input type="number" id="fre" value=393050 onchange="handleChange(this);" name='frequency' min="393000" max="450000" />
+			<p> Frequency :<input type="number" id="fre" value=403000 onchange="handleChange(this);" name='frequency' min="393000" max="450000" />
 
 			<p>Bandwidth :<select id="defaults" name='bandwidth'>
-								<option value=2000 selected>2000</option>
-								<option value=6000>6000</option>
+								<option value=2000>2000</option>
+								<option value=6000 selected="">6000</option>
 								<option value=8000>8000</option>
 						</select></p>
 			<p>Modulation :<select id="mod" name="modulation">
-								<option value=4>QPSK</option>
+								<option value=4 selected>QPSK</option>
 								<option value=16>QAM16</option>
 								<option value=32>QAM32</option>
 						  </select>
 
 			</p>				
 			<p>FEC : <select id="fec" name="FEC">
-								<option value="1/2">1/2</option>
+								<option value="1/2" selected>1/2</option>
 								<option value="2/3">2/3</option>
 								<option value="3/4">3/4</option>
 								<option value="5/6">5/6</option>
@@ -115,12 +115,12 @@
 					 </select></p>
 			<p>G.I. : <select id="gi" name="GI">
 								<option value="1/16">1/16</option>
-								<option value="1/32">1/32</option>
+								<option value="1/32" selected>1/32</option>
 								<option value="1/8">1/8</option>
 								<option value="1/4">1/4</option>
 					 </select></p>
 
-			<p> Gain :<input type="number" id="gain" name="Gain" min=-15 max=0></p>
+			<p> Gain :<input type="number" value=-2 id="gain" name="Gain" min=-15 max=0></p>
 			
 			
 			

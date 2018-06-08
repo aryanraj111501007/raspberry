@@ -1,23 +1,33 @@
 <?php
-	
-	$handle = fopen("hiddenfile.txt", "r") or die("couldn,t open\n");
-	$actual_username=fgets($handle);
-	$actual_password=fgets($handle);
-	$password=$_POST['passwd'];
-	$username=$_POST['uname']."\n";
-	
-	
-	
-	if($actual_password!=$password || $actual_username!=$username)
+	session_start();
+	$val=$_SESSION['visited'];
+	if($val==1)
 	{
-		echo "<a href='auth.html'>log in</a>";
-		die ("wrong password or username");
+		echo "your form has been submitted.click on reboot";
+		session_unset();
 	}
-	else {
-		echo "welcome you are logged in";
-		$password="";
+	else{
+		$handle = fopen("hiddenfile.txt", "r") or die("couldn,t open\n");
+		$actual_username=fgets($handle);
+		$actual_password=fgets($handle);
+		$password=$_POST['passwd'];
+		$username=$_POST['uname']."\n";
+		
+		
+		
+		if($actual_password!=$password || $actual_username!=$username)
+		{
+			echo "<a href='auth.html'>log in</a>";
+			die ("wrong password or username");
+		}
+		else {
+			echo "welcome you are logged in";
+			$password="";
+
+		}
 
 	}
+	
 ?>
 
 
@@ -31,7 +41,7 @@
 				z-index: 0;
 			}
 			#form{
-				height:1000px;
+				height:700px;
 				width:500px;
 				background-color: #42e5f4;
 				z-index: 1;
@@ -52,6 +62,9 @@
             // Container <div> where dynamic content will be placed
             var container = document.getElementById("container");
             // Clear previous contents of the container
+             while (container.hasChildNodes()) {
+                container.removeChild(container.lastChild);
+            }
            
             for (i=0;i<number;i++){
                 // Append a node with a random text
@@ -74,9 +87,10 @@
 
 	<body>
 		
-    	<a href="#" id="filldetails" onclick="addFields()">add camera</a>
+    	
 		<form action="ip_changer.php" method=post id="form">
-			<input type="text" id="camera" name="camera" value="">Number of camera<br />
+			<p>No of camera:<input type="number" id="camera" name="camera" min=0></p>
+			<a href="#" id="filldetails" onclick="addFields()">add camera</a>
 			<div id="container"></div>
 			<p> Frequency :<input type="number" id="fre" value=393050 onchange="handleChange(this);" name='frequency' min="393000" max="450000" />
 
@@ -114,7 +128,13 @@
 			<p><button>submit</button>
 		</form>
 
+
+
 		<button id="set-defaults" onclick="setdefaults()">setdefaults</button>
+
+		<form action='restart.php' method='post'>
+			<button>reboot</button>
+		</form>
 		<script> 
 			
 			function setdefaults(){

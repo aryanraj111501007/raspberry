@@ -34,7 +34,9 @@
 	$txt = "$count"."\n"."$txt"."$frequency"."\n"."$bandwidth"."\n"."$modulation"."\n"."$fec"."\n"."$gi"."\n"."$Gain"."\n";
 	fwrite($myfile, $txt);
 	fclose($myfile);
-	header('Location:confirmation.php');
+	session_start();
+	$_SESSION['visited']=1;
+	header('Location:ipGui.php');
 	echo $Ip[2];
 
 

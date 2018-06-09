@@ -33,7 +33,7 @@
 
 <html>
 	<head>
-		<script src="http://knockoutjs.com/downloads/knockout-3.0.0.debug.js" type="text/javascript"></script>
+		<script src="knockout-3.0.0.debug.js" type="text/javascript"></script>
 			
 
 

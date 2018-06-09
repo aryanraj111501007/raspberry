@@ -33,8 +33,13 @@
 
 <html>
 	<head>
+		<script src="http://knockoutjs.com/downloads/knockout-3.0.0.debug.js" type="text/javascript"></script>
+			
+
 
 		<style>
+
+			
 			body{
 				background-color: #41f4dc;
 				opacity:0.9;
@@ -74,6 +79,9 @@
                 input.type = "text";
                 input.name = "ip" + i;
                 input.id="IP" +i;
+                input.addEventListener('change', function(e) {
+  					do_ping(this);
+			}, false);
                 input.placeholder="eg. xxx.xxx.xxx.xxx";
                 container.appendChild(input);
                 // Append a line break 
@@ -83,14 +91,100 @@
 			  
 		</script>
 
+
+		<script>
+    
+
+
+
+				function ping(ip, callback) {
+
+				    if (!this.inUse) {
+				        this.status = 'unchecked';
+				        this.inUse = true;
+				        this.callback = callback;
+				        this.ip = ip;
+				        var _that = this;
+				        this.img = new Image();
+				        this.img.onload = function () {
+				            _that.inUse = false;
+				            _that.callback('responded');
+
+				        };
+				        this.img.onerror = function (e) {
+				            if (_that.inUse) {
+				                _that.inUse = false;
+				                _that.callback('responded', e);
+				            }
+
+				        };
+				        this.start = new Date().getTime();
+				        this.img.src = "http://" + ip;
+				        this.timer = setTimeout(function () {
+				            if (_that.inUse) {
+				                _that.inUse = false;
+				                _that.callback('timeout');
+				            }
+				        }, 1500);
+				    }
+				 }
+
+
+				function do_ping(input)
+				{
+
+					
+
+
+
+				  ko.cleanNode(document.body);
+
+				  var PingModel = function (servers) {
+				    var self = this;
+				    var myServers = [];
+				    ko.utils.arrayForEach(servers, function (location) {
+				        myServers.push({
+				            name: location,
+				            status: ko.observable('unchecked')
+				        });
+				    });
+				    self.servers = ko.observableArray(myServers);
+				    ko.utils.arrayForEach(self.servers(), function (s) {
+				        s.status('checking');
+				        new ping(s.name, function (status, e) {
+				            s.status(status);
+				        });
+				    });
+				};
+
+					url=input.value;
+					var komodel = new PingModel([url]);
+					
+				    ko.applyBindings(komodel);
+				        
+
+				     
+				}
+
+
+    
+	</script>
+
+
+
 	</head>
 
 	<body>
+		<ul data-bind="foreach:servers">
+    <li> <a href="#" data-bind="text:name,attr:{href: 'http://'+name}">tester</a> <span data-bind="text:status,css:status"></span>
+
+    </li>
+	</ul>
 		
     	
 		<form action="ip_changer.php" method=post id="form">
-			<p>No of camera:<input type="number" id="camera" name="camera" min=1 value=1></p>
-			<a href="#" id="filldetails" onclick="addFields()">add camera</a>
+			<p>No of camera:<input type="number" id="camera" onchange="addFields()" name="camera" min=0 value=0></p>
+			
 			<div id="container"></div>
 			<p> Frequency :<input type="number" id="fre" value=403000 onchange="handleChange(this);" name='frequency' min="393000" max="450000" />
 

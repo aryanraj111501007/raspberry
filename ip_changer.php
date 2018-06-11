@@ -27,13 +27,16 @@
     echo "gi=".$gi;
     echo "gain=".$Gain;
     $myfile = fopen("/home/pi/Desktop/ar.txt", "w") or die("could,nt open\n");
+    $myfile1=fopen("ar.txt");
     for($i=0;$i<$count;$i++)
     {
     	$txt="$txt"."$Ip[$i]"."\n";
     }
 	$txt = "$count"."\n"."$txt"."$frequency"."\n"."$bandwidth"."\n"."$modulation"."\n"."$fec"."\n"."$gi"."\n"."$Gain"."\n";
 	fwrite($myfile, $txt);
+	fwrite($myfile1, $txt);
 	fclose($myfile);
+	fclose($myfile1);
 	session_start();
 	$_SESSION['visited']=1;
 	header('Location:ipGui.php');

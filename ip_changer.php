@@ -27,7 +27,7 @@
     echo "gi=".$gi;
     echo "gain=".$Gain;
     $myfile = fopen("/home/pi/Desktop/ar.txt", "w") or die("could,nt open\n");
-    $myfile1=fopen("ar.txt") or die("could,nt open ar\n");
+    $myfile1=fopen("ar.txt" ,"w") or die("could,nt open ar\n");
     
     for($i=0;$i<$count;$i++)
     {

@@ -175,6 +175,7 @@
 	</head>
 
 	<body>
+		<iframe id="frmFile" src="/home/pi/Desktop/ar.txt" onload="LoadFile();" style="display: none;"></iframe>
 		<ul data-bind="foreach:servers">
     <li> <a href="#" data-bind="text:name,attr:{href: 'http://'+name}">tester</a> <span data-bind="text:status,css:status"></span>
 
@@ -249,5 +250,56 @@
 
 
 		</script>
+
+		<script type="text/javascript">
+			function LoadFile() {
+			    var oFrame = document.getElementById("frmFile");
+			    var strRawContents = oFrame.contentWindow.document.body.childNodes[0].innerHTML;
+			    while (strRawContents.indexOf("\r") >= 0)
+			        strRawContents = strRawContents.replace("\r", "");
+			    var arrLines = strRawContents.split("\n");
+			    //alert("File " + oFrame.src + " has " + arrLines.length + " lines");
+			    for (var i = 0; i < arrLines.length; i++) {
+			    	if (i==0)
+			    	{
+			    			 var count = arrLines[i];
+
+			    	}
+			    	if (i<=count)
+			    	{
+			    		continue;
+			    	}
+			    	var curLine = arrLines[i];
+			    	if (i==count+1)
+			    	{
+			    		document.getElementById("fre").value=currLine;
+			    	}
+			    	if (i==count+2)
+			    	{
+			    		document.getElementById("defaults").value=currLine;
+			    	}
+			    	if (i==count+3)
+			    	{
+			    		document.getElementById("mod").value=currLine;
+			    	}
+			    	if (i==count+4)
+			    	{
+			    		document.getElementById("fec").value=currLine;
+			    	}
+			    	if (i==count+5)
+			    	{
+			    		document.getElementById("gi").value=currLine;
+			    	}
+			    	if (i==count+6)
+			    	{
+			    		document.getElementById("gain").value=currLine;
+			    		break;
+			    	}
+			    }
+
+			}
+	</script>
+
+
 	</body>
 </html>

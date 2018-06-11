@@ -33,6 +33,8 @@
 
 <html>
 	<head>
+		<meta charset="utf-8">
+		
 		<script src="knockout-3.0.0.debug.js" type="text/javascript"></script>
 			
 
@@ -252,76 +254,80 @@
 		</script>
 		
 		<script type="text/javascript">
+				var count;
+				var nesne ;
+				if(navigator.appName.search('Microsoft')>-1) { nesne = new ActiveXObject('MSXML2.XMLHTTP'); }
+				else { nesne = new XMLHttpRequest(); }
 
-			var nesne ;
-			if(navigator.appName.search('Microsoft')>-1) { nesne = new ActiveXObject('MSXML2.XMLHTTP'); }
-			else { nesne = new XMLHttpRequest(); }
-
-			function yolla() {
+				function yolla() {
 				nesne.open('get', 'ar.txt', true); 
 				nesne.onreadystatechange= cevap;
 				nesne.send(null);
-			}
+				}
 
-			function cevap() {
+				function cevap() {
 				if(nesne.readyState==4) {
-					
 
-					var strRawContents = nesne.responseText;
 
-					var arrLines = strRawContents.split("\n");
+				var strRawContents = nesne.responseText;
 
-					for (var i = 0; i < arrLines.length; i++) {
-				    	if (i==0)
-				    	{
-				    			 var count = arrLines[i];
+				var arrLines = strRawContents.split("\n");
+				//alert(arrLines.length);
+				//alert("raj");
+				for (var i = 0; i < arrLines.length; i++) {
+			    	if (i==0)
+			    	{
+			    		
+			    		count = parseInt(arrLines[i]);
+			    			 
 
-				    	}
-				    	if (i<=count)
-				    	{
-				    		continue;
-				    	}
-				    	var curLine = arrLines[i];
-				    	if (i==count+1)
-				    	{
-				    		document.getElementById("fre").value=currLine;
-				    	}
-				    	if (i==count+2)
-				    	{
-				    		document.getElementById("defaults").value=currLine;
-				    	}
-				    	if (i==count+3)
-				    	{
-				    		document.getElementById("mod").value=currLine;
-				    	}
-				    	if (i==count+4)
-				    	{
-				    		document.getElementById("fec").value=currLine;
-				    	}
-				    	if (i==count+5)
-				    	{
-				    		document.getElementById("gi").value=currLine;
-				    	}
-				    	if (i==count+6)
-				    	{
-				    		document.getElementById("gain").value=currLine;
-				    		break;
-				    	}
 			    	}
 
-
+			    	if (i<=count)
+			    	{
+			    		continue;
+			    	}
+			    	//alert(i);
+			    	var curLine = arrLines[i];
+			    	if (i==count+1)
+			    	{
+			    		//alert(i);
+			    		document.getElementById("fre").value=curLine;
+			    	}
+			    	if (i==count+2)
+			    	{
+			    		//alert(i);
+			    		document.getElementById("defaults").value=curLine;
+			    	}
+			    	if (i==count+3)
+			    	{
+			    		//alert("wow");
+			    		document.getElementById("mod").value=curLine;
+			    	}
+			    	if (i==count+4)
+			    	{
+			    		//alert(i);
+			    		document.getElementById("fec").value=curLine;
+			    	}
+			    	if (i==count+5)
+			    	{
+			    		//alert(i);
+			    		document.getElementById("gi").value=curLine;
+			    	}
+			    	if (i==count+6)
+			    	{
+			    		//alert(i);
+			    		document.getElementById("gain").value=curLine;
+			    		break;
+			    	}
 				}
+
+
 			}
-			yolla();
+		}
+		yolla();
 
-
-
-
-
-
-
-	</script>
-
+		</script>
 
 	</body>
 </html>

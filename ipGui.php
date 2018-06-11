@@ -218,11 +218,15 @@
 					 </select></p>
 
 			<p> Gain :<input type="number" value=-2 id="gain" name="Gain" min=-15 max=0></p>
-			
+			<p>NO OF SUB_CARRIERS : <select id="carrier" name="carrier">
+								<option value=8>8k</option>
+								<option value=2>2k</option>
+								
+					 </select></p>
 			
 			
 
-			<p><button>submit</button>
+			<p><button>submit</button></p>
 		</form>
 
 
@@ -242,6 +246,7 @@
 				document.getElementById("fec").value="1/2";
 				document.getElementById("gi").value="1/32"
 				document.getElementById("gain").value=-2;
+				document.getElementById("gain").value=8;
 
 			}
 			
@@ -318,6 +323,12 @@
 			    	{
 			    		//alert(i);
 			    		document.getElementById("gain").value=curLine;
+			    		//break;
+			    	}
+			    	if (i==count+7)
+			    	{
+			    		//alert(i);
+			    		document.getElementById("carrier").value=curLine;
 			    		break;
 			    	}
 				}

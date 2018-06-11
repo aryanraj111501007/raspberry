@@ -20,6 +20,7 @@
     $fec=$_POST['FEC'];
     $gi=$_POST['GI'];
     $Gain=$_POST['Gain'];
+    $carrier=$_POST['carrier'];
     echo "frequency=".$frequency;
     echo "bandwidth=".$bandwidth;
     echo "modulation".$modulation;
@@ -33,7 +34,8 @@
     {
     	$txt="$txt"."$Ip[$i]"."\n";
     }
-	$txt = "$count"."\n"."$txt"."$frequency"."\n"."$bandwidth"."\n"."$modulation"."\n"."$fec"."\n"."$gi"."\n"."$Gain"."\n";
+	$txt = "$count"."\n"."$txt"."$frequency"."\n"."$bandwidth"."\n"."$modulation"."\n"."$fec"."\n"."$gi"."\n"."$Gain"."\n"."$carrier"."\n";
+	
 	fwrite($myfile, $txt);
 	fwrite($myfile1, $txt);
 	fclose($myfile);

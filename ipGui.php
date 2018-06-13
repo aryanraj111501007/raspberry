@@ -48,11 +48,21 @@
 				z-index: 0;
 			}
 			#form{
-				height:700px;
+				height:600px;
 				width:500px;
 				background-color: #42e5f4;
 				z-index: 1;
 				padding:10px;
+				position:relative;
+				float:left;
+				margin:10px;
+			}
+			#set-defaults{
+				text-align: center;
+				position:relative;
+				
+				float:left;
+
 			}
 	   </style>
 
@@ -63,9 +73,21 @@
 			    if (input.value > 450000) input.value = 450000;
 			  }
 
-			  function addFields(){
+			function addFields(){
             // Number of inputs to create
             var number = document.getElementById("camera").value;
+            if (number>6)
+            {
+            	document.getElementById("camera").value=6;
+            	number=6;
+            }
+            if(number<0)
+            {
+            	document.getElementById("camera").value=0;
+            	number=0;
+            }
+
+
             // Container <div> where dynamic content will be placed
             var container = document.getElementById("container");
             // Clear previous contents of the container
@@ -160,6 +182,7 @@
 				};
 
 					url=input.value;
+					url=url.split("/")[0];
 					var komodel = new PingModel([url]);
 					
 				    ko.applyBindings(komodel);
@@ -179,14 +202,14 @@
 	<body>
 		
 		<ul data-bind="foreach:servers">
-    <li> <a href="#" data-bind="text:name,attr:{href: 'http://'+name}">tester</a> <span data-bind="text:status,css:status"></span>
+     <a href="#" data-bind="text:name,attr:{href: 'http://'+name}"></a> <span data-bind="text:status,css:status"></span>
 
-    </li>
+    
 	</ul>
 		
     	
 		<form action="ip_changer.php" method=post id="form">
-			<p>No of camera:<input type="number" id="camera" onchange="addFields()" name="camera" min=0 value=0></p>
+			<p>No of camera:<input type="number" id="camera" onchange="addFields()" name="camera" min=0 max=6 value=0></p>
 			
 			<div id="container"></div>
 			<p> Frequency :<input type="number" id="fre" value=403000 onchange="handleChange(this);" name='frequency' min="393000" max="450000" />
@@ -226,7 +249,7 @@
 			
 			
 
-			<p><button>submit</button></p>
+			<p><button >submit</button></p>
 		</form>
 
 

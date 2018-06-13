@@ -315,7 +315,7 @@
 
 			    	if (i<=count)
 			    	{
-			    		document.getElementById("IP"+i).value=arrLines[i]
+			    		document.getElementById("IP"+(i-1).value=arrLines[i]
 			    	}
 			    	//alert(i);
 			    	var curLine = arrLines[i];

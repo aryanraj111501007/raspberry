@@ -314,7 +314,7 @@
 
 			    	if (i<=count)
 			    	{
-			    		continue;
+			    		document.getElementById("IP"+i).value=arrLines[i]
 			    	}
 			    	//alert(i);
 			    	var curLine = arrLines[i];

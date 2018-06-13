@@ -1,6 +1,7 @@
 <?php
 	session_start();
 	$val=$_SESSION['visited'];
+	session_destroy();
 	if($val==1)
 	{
 		echo "your form has been submitted.click on reboot";
@@ -44,7 +45,7 @@
 			
 			body{
 				background-color: #41f4dc;
-				opacity:0.9;
+				opacity:1;
 				z-index: 0;
 			}
 			#form{
@@ -63,6 +64,10 @@
 				
 				float:left;
 
+			}
+			#log-out{
+				position:relative;
+				float:right;
 			}
 	   </style>
 
@@ -200,6 +205,7 @@
 	</head>
 
 	<body>
+		<a id="log-out" href="logout.html" onclick="logout();">logout</a>
 		
 		<ul data-bind="foreach:servers">
      <a href="#" data-bind="text:name,attr:{href: 'http://'+name}"></a> <span data-bind="text:status,css:status"></span>
@@ -364,6 +370,8 @@
 		yolla();
 
 		</script>
+		
+		
 
 	</body>
 </html>

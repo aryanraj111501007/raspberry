@@ -308,7 +308,8 @@
 			    		
 			    		count = parseInt(arrLines[i]);
 			    		document.getElementById("camera").value=count;
-			    		addFields();	 
+			    		addFields();
+			    		continue;	 
 
 			    	}
 
